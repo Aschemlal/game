@@ -208,7 +208,7 @@ document.addEventListener('keydown', function(event){
 	if(kode==38) direction(1)
 	if(kode==39) direction(2)
 	if(kode==40) direction(3)
-	if(kode==32) explorer(1)
+	if(kode==32) explorer(3)
 });
 
 
