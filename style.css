@@ -11,7 +11,7 @@ body {
     height: 100vh;
 }
 main {
-    width: 60vh;
+    width: 70vh;
     display: flex;
     flex-direction: column;
     border: solid 2px black;
@@ -73,4 +73,15 @@ button:hover {
 }
 section {
     padding: 20px;
+}
+@media only screen and (min-width: 600px) {
+    main {
+        width: 90%;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    main {
+        width: 60%;
+    }
 }
