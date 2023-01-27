@@ -74,11 +74,7 @@ button:hover {
 section {
     padding: 20px;
 }
-@media only screen and (min-width: 600px) {
-    main {
-        width: 90%;
-    }
-}
+
 
 @media only screen and (min-width: 768px) {
     main {
