@@ -208,7 +208,7 @@ document.addEventListener('keydown', function(event){
 	if(kode==38) direction(1)
 	if(kode==39) direction(2)
 	if(kode==40) direction(3)
-	if(kode==32) explorer()
+	if(kode==32) explorer(1)
 });
 
 
@@ -300,7 +300,7 @@ function sleep(ms) {
 var chemin = []
 
 
-async function explorer(){
+async function explorer(vitesse){
 
 	let depart =[0,0]
 	let dest = [9,9]
@@ -313,7 +313,7 @@ async function explorer(){
 
 	while(i!=9 || j!=9){
 		
-		await sleep(10)
+		await sleep(1000/vitesse)
 
 		maison = chemin.pop()
 		vider()

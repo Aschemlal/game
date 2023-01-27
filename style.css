@@ -11,7 +11,7 @@ body {
     height: 100vh;
 }
 main {
-    width: 50%;
+    width: 60vh;
     display: flex;
     flex-direction: column;
     border: solid 2px black;
