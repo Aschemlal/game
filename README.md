@@ -1,3 +1,3 @@
-# game
+# Link to page
 
-houdayfa.me/game
+https://houdayfa.me/game/
