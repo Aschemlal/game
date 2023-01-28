@@ -44,36 +44,18 @@ article {
 button {
     padding: 20px;
     border-radius: 50px;
-    font-size: 20px;
+    font-size: 22px;
+    font-family: 'ArcadeClassic', sans-serif;
 }
 button:hover {
     background-color: beige;
 }
 
-.g {
-    top: 400px;
-    right: 270px;
-}
-.h {
-    top: 340px;
-    right: 170px;
-}
-.b {
-    top: 460px;
-    right: 170px;
-}
-.d {
-    top: 400px;
-    right: 70px;
-}
 
 p {
-    top: 90vh;
-
     font-size: 50px;
     transition: 1;
-    font-family: 'ArcadeClassic', sans-serif;
-                                                
+    font-family: 'ArcadeClassic', sans-serif;                                
 }
 
 .ghost {
