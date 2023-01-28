@@ -1,3 +1,5 @@
+@import url('https://fonts.cdnfonts.com/css/arcade-classic');
+
 *{
     margin: 0;
     padding: 0;
@@ -65,11 +67,13 @@ button:hover {
     right: 70px;
 }
 
-#para {
-    position: absolute;
+p {
     top: 90vh;
+
     font-size: 50px;
     transition: 1;
+    font-family: 'ArcadeClassic', sans-serif;
+                                                
 }
 
 .ghost {

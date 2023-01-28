@@ -1,20 +1,20 @@
 let body = document.body
 let laby = new Array()
 let main = document.getElementById('main')
-let N ="border-top: 2px solid black;"
+let N ="border-top: 3px solid black;"
 let E ="border-right: 2px solid black;"
-let S ="border-bottom: 2px solid black;"
+let S ="border-bottom: 3px solid black;"
 let W ="border-left: 2px solid black;"
 
 
 
 function beep() {
-    var bp = new Audio("./beep.wav");  
+    var bp = new Audio("media/beep.wav");  
     bp.play();
 }
 
 function winner(){
-	var fin = new Audio('./winner.mp3')
+	var fin = new Audio('media/winner.mp3')
 	fin.play()
 }
 
@@ -195,7 +195,7 @@ function direction(n){
 	divisions[i][j].innerHTML=ghost
 	if(i==9 && j==9) {
 		let paccol = document.getElementsByClassName('ghost')[0]
-		para.innerText="SUPER! you win!"
+		para.innerText=" Super! we  got a  winner!"
 		paccol.style.color='red'
 		winner()
 	}
