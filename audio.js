@@ -1,5 +1,5 @@
-function temp(){
-   var song = new Audio('./song.mp3')
-   song.play()
+let song = () => {
+    var s = new Audio('song.mp3')
+    s.play()
 }
-temp()
+song()
