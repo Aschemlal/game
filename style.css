@@ -19,20 +19,22 @@ main {
 }
 div {
     width: 10% ;
-    height: 46px ;
+    height: 50px ;
     display: flex;
     justify-content: center;
     align-items: center;
+    
+
 }
 article {
     width: 100%;
     display: flex;
-}
+    background-image: url(grass.png);
 
-span {
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
+
+}
+.sol {
+    background-image: url(sol.png);
 }
 
 button {

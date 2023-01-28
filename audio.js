@@ -3,4 +3,3 @@ let song = () => {
     s.play()
 }
 
-song()
