@@ -209,7 +209,8 @@ document.addEventListener('keydown', function(event){
 	if(kode==38) direction(1)
 	if(kode==39) direction(2)
 	if(kode==40) direction(3)
-	if(kode==32) explorer(3)
+	if(kode==32) explorer(3, true)
+	if(kode==9) afficher()
 });
 
 
@@ -299,40 +300,73 @@ function vider(){
 
 var chemin = []
 
-async function explorer(vitesse){
+async function explorer(vitesse, choice){
 
 	let depart =[0,0], maison = [], voisine = [0,0]
 	chemin.push(depart)
 	laby[0][0][5] = true
 	let i=0, j=0
 
-	divisions[0][0].innerHTML=''
-
-	while(i!=9 || j!=9){
-		
+	if(choice){
+		divisions[0][0].innerHTML=''
+		while(i!=9 || j!=9){
+			await sleep(1000/vitesse)
+			maison = chemin.pop()
+			vider()
+			divisions[maison[0]][maison[1]].innerHTML=ghost
+			if(CasesVoisines(maison[0], maison[1])!='vide'){
+				voisine = CasesVoisines(maison[0], maison[1])
+				chemin.push(maison)
+				chemin.push(voisine)
+				laby[voisine[0]][voisine[1]][5] = true
+			}
+			beep()
+			i = voisine[0]
+			j = voisine[1]
+		}
 		await sleep(1000/vitesse)
+		divisions[maison[0]][maison[1]].innerHTML=''
+		divisions[9][9].innerHTML=ghost
+		winner()
+	}
+	if(!choice) {
+		while(i!=9 || j!=9){
+			maison = chemin.pop()
+			if(CasesVoisines(maison[0], maison[1])!='vide'){
+				voisine = CasesVoisines(maison[0], maison[1])
+				chemin.push(maison)
+				chemin.push(voisine)
+				laby[voisine[0]][voisine[1]][5] = true
+				
+			}
+			i = voisine[0]
+			j = voisine[1]
+		}
 
-		maison = chemin.pop()
-		vider()
-		divisions[maison[0]][maison[1]].innerHTML=ghost
+	}
 
-		if(CasesVoisines(maison[0], maison[1])!='vide'){
-			voisine = CasesVoisines(maison[0], maison[1])
-			chemin.push(maison)
-			chemin.push(voisine)
-			laby[voisine[0]][voisine[1]][5] = true
+}
+
+async function afficher(){
+	explorer(3, false)
+	let att = false
+	for(let k=0; k<chemin.length; k++)
+	{
+		await sleep(500)
+		for(let i=0; i<10; i++){
+			for(let j=0; j<10; j++){
+				if(chemin[k][0]==i && chemin[k][1]==j) {
+					vider()
+					divisions[i][j].innerHTML=ghost	
+					
+				}
+						
+			}
 			
 		}
-		beep()
-		i = voisine[0]
-		j = voisine[1]
 	}
-	await sleep(1000/vitesse)
-	
-	divisions[maison[0]][maison[1]].innerHTML=''
-	divisions[9][9].innerHTML=ghost
-	winner()
 }
+
 
 let jeu=()=>{
 	MC()

@@ -21,8 +21,10 @@
         <button class="h" onclick="direction(1)"><i class="fa-solid fa-arrow-up"></i></button>
         <button class="d" onclick="direction(2)"><i class="fa-solid fa-arrow-right"></i></button>
         <button class="b" onclick="direction(3)"><i class="fa-solid fa-arrow-down"></i></button>
-        <button class="solver" onclick="explorer(1)">Solver</button>
-
+        <aside>
+            <button class="solver" title="space key" onclick="explorer(1, true)">Auto play</button>
+            <button class="tab" title="shift key" onclick="afficher()">Solution</button>
+        </aside>
     </section>
     <p id="para">
     </p>
