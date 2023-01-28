@@ -201,8 +201,11 @@ function direction(n){
 	}
 	
 }
+let debut = true
 document.addEventListener('keydown', function(event){
 	let kode = event.keyCode
+	if(debut) new Audio('media/song.mp3').play()
+	debut = false
 	if(kode==37) direction(0)
 	if(kode==38) direction(1)
 	if(kode==39) direction(2)
@@ -357,6 +360,7 @@ async function afficher(){
 				if(chemin[k][0]==i && chemin[k][1]==j) {
 					vider()
 					divisions[i][j].innerHTML=ghost	
+					divisions[i][j].classList.add('sol')
 					
 				}
 						
