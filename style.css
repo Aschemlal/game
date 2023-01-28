@@ -14,7 +14,7 @@ main {
     width: 50%;
     display: flex;
     flex-direction: column;
-    border: solid 2px black;
+    border: solid 4px black;
 
 }
 div {
@@ -23,18 +23,20 @@ div {
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    margin-top: -1px;
+    margin-bottom: -1px; 
 
 }
 article {
     width: 100%;
     display: flex;
-    background-image: url(grass.png);
-
+    background-image: url(media/grass.png);
+    margin-top: -2px;
+    margin-bottom: -2px; 
 
 }
 .sol {
-    background-image: url(sol.png);
+    background-image: url(media/sol.png);
 }
 
 button {
