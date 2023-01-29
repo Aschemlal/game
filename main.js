@@ -1,3 +1,23 @@
+let debut = true
+document.addEventListener('keydown', function(event){
+	let kode = event.keyCode
+	if(debut) {
+		ch.play()
+		debut = false
+	}
+		
+	if(kode==37) direction(0)
+	if(kode==38) direction(1)
+	if(kode==39) direction(2)
+	if(kode==40) direction(3)
+	if(kode==32) explorer(3, true)
+	if(kode==16) afficher()
+	if(kode==13) {
+		para.innerHTML='Waiting you to win!'
+	}
+});
+
+
 let body = document.body
 let laby = new Array()
 let main = document.getElementById('main')
@@ -5,34 +25,36 @@ let N ="border-top: 3px solid black;"
 let E ="border-right: 2px solid black;"
 let S ="border-bottom: 3px solid black;"
 let W ="border-left: 2px solid black;"
+let articles = []
+let divisions = []
 
 
-
-function beep() {
+let beep=()=> {
     var bp = new Audio("media/beep.wav");  
     bp.play();
 }
 
-function winner(){
+let winner=()=>{
 	var fin = new Audio('media/winner.mp3')
 	fin.play()
 }
 
-function sleep(ms) { 
+let sleep=ms=> { 
 	return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-function randomint(max) {
+let randomint=max=>{
     return Math.floor(Math.random() * max);
 }
 
-for(let i=0; i<10; i++)
-    laby[i] = new Array()
-for(let i=0; i<10; i++)
-    for(let j=0; j<10; j++)
-        laby[i][j]= new Array()
 
-let fct = () => {
+let initLaby = () => {
+	for(let i=0; i<10; i++)
+    laby[i] = new Array()
+	for(let i=0; i<10; i++)
+    	for(let j=0; j<10; j++)
+        	laby[i][j]= new Array()
+
     for(let i=0; i<10; i++){
         for(let j=0; j<10; j++){
             laby[i][j][0] = false // N
@@ -44,10 +66,8 @@ let fct = () => {
         }
     }
 }
-fct()
 
-let articles = []
-let divisions = []
+
 for(let i=0; i<10; i++){
     articles[i] = document.createElement('article')
     divisions[i] = new Array()
@@ -63,7 +83,6 @@ function draw(){
     let div=''
     for(let i=0; i<10; i++){
         for(let j=0; j<10; j++){
-
             if(!laby[i][j][0]) div+=N
             if(!laby[i][j][1]) div+=E
             if(!laby[i][j][2]) div+=S
@@ -78,7 +97,7 @@ function draw(){
 
 
 
-function NbrVoisins(laby, a, b){
+let NbrVoisins=(laby, a, b)=>{
 	let Cvoisin = 0
 
 	if(a+1<10 && !(laby[a+1][b][4])) Cvoisin++;
@@ -94,7 +113,7 @@ function NbrVoisins(laby, a, b){
 
 
 
-function voisin(laby, col, li){
+let voisin=(laby, col, li)=>{
 	let nbr= NbrVoisins(laby, col, li)
     let Cvoisin = 0
 	let couples = new Array();
@@ -130,7 +149,7 @@ function voisin(laby, col, li){
 	
 }
 
-function CreerPassage(laby, c, d){ 
+let CreerPassage=(laby, c, d)=>{ 
 
 	if(c[0]==d[0]){
 		if(c[1]+1==d[1]){
@@ -183,7 +202,7 @@ let blanc='background-color: white;'
 let ghost = '<i class="fa-solid fa-ghost ghost"></i>'
 let i=0, j=0;
 divisions[0][0].innerHTML=ghost
-function direction(n){
+let direction=n=>{
 	beep()
 	divisions[i][j].innerHTML=''
 	divisions[i][j].classList.add('sol')
@@ -197,28 +216,17 @@ function direction(n){
 		let paccol = document.getElementsByClassName('ghost')[0]
 		para.innerText=" Super! we  got a  winner!"
 		paccol.style.color='red'
+		ch.pause()
+		var r = new Audio('media/r.mp3')
+		r.play()
 		winner()
 	}
 	
 }
-let debut = true
-function song(){
-	if(debut) new Audio('media/song.mp3').play()
-	debut = false
-}
-document.addEventListener('keydown', function(event){
-	let kode = event.keyCode
-	song()
-	if(kode==37) direction(0)
-	if(kode==38) direction(1)
-	if(kode==39) direction(2)
-	if(kode==40) direction(3)
-	if(kode==32) explorer(3, true)
-	if(kode==16) afficher()
-});
+var ch = new Audio('media/song.mp3')
 
 
-function EstPassage(c, d){ 
+let EstPassage=(c, d)=>{ 
 	let existe = true
 
 	if(c[0]==d[0]){
@@ -247,7 +255,7 @@ function EstPassage(c, d){
 	return existe
 }
 
-function CasesVoisines(a, b){
+let CasesVoisines=(a, b)=>{
 	let cmp=0
 	let C = [], D = [], tableau = []
 
@@ -291,7 +299,7 @@ function CasesVoisines(a, b){
     return tableau[randomint(cmp)];
 }
 
-function vider(){
+let vider=()=>{
 	for(let i=0; i<10; i++){
 		for(let j=0; j<10; j++){
 			if(i!=9 ||  j!=9)
@@ -318,6 +326,7 @@ async function explorer(vitesse, choice){
 			maison = chemin.pop()
 			vider()
 			divisions[maison[0]][maison[1]].innerHTML=ghost
+			divisions[maison[0]][maison[1]].classList.add('sol')
 			if(CasesVoisines(maison[0], maison[1])!='vide'){
 				voisine = CasesVoisines(maison[0], maison[1])
 				chemin.push(maison)
@@ -331,6 +340,8 @@ async function explorer(vitesse, choice){
 		await sleep(1000/vitesse)
 		divisions[maison[0]][maison[1]].innerHTML=''
 		divisions[9][9].innerHTML=ghost
+		divisions[9][9].classList.add('sol')
+		
 		winner()
 	}
 	if(!choice) {
@@ -375,6 +386,8 @@ async function afficher(){
 
 
 let jeu=()=>{
+	divisions[0][0].classList.add('sol')
+	initLaby()
 	MC()
 	draw()
 }

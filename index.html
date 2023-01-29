@@ -13,20 +13,23 @@
     <link rel="shortcut icon" href="media/icon.png" type="image/x-icon">
 </head>
 <body onclick="song()">
+    
     <main id="main">
     </main>
     <section>
-        <button class="g" onclick="direction(0)"><i class="fa-solid fa-arrow-left"></i></button>
-        <button class="h" onclick="direction(1)"><i class="fa-solid fa-arrow-up"></i></button>
-        <button class="d" onclick="direction(2)"><i class="fa-solid fa-arrow-right"></i></button>
-        <button class="b" onclick="direction(3)"><i class="fa-solid fa-arrow-down"></i></button>
+        <aside class="aside">
+            <button class="g" onclick="direction(0)"><i class="fa-solid fa-arrow-left"></i></button>
+            <button class="h" onclick="direction(1)"><i class="fa-solid fa-arrow-up"></i></button>
+            <button class="d" onclick="direction(2)"><i class="fa-solid fa-arrow-right"></i></button>
+            <button class="b" onclick="direction(3)"><i class="fa-solid fa-arrow-down"></i></button>
+        </aside>
         <aside>
             <button class="solver" title="space key" onclick="explorer(1, true)">Auto play</button>
             <button class="tab" title="shift key" onclick="afficher()">Solution</button>
         </aside>
     </section>
     <p id="para">
-        Waiting for you to win!
+        Click enter to start
     </p>
 
 </body>
