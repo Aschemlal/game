@@ -10,9 +10,16 @@ document.addEventListener('keydown', function(event){
 	if(kode==38) direction(1)
 	if(kode==39) direction(2)
 	if(kode==40) direction(3)
-	if(kode==32) explorer(3, true)
-	if(kode==16) afficher()
+	if(kode==32) {
+		divisions[0][0].classList.add('sol')
+		explorer(3, true)
+	}
+	if(kode==16) {
+		divisions[0][0].classList.add('sol')
+		afficher()
+	}
 	if(kode==13) {
+		divisions[0][0].classList.add('sol')
 		para.innerHTML='Waiting you to win!'
 	}
 });
@@ -386,7 +393,6 @@ async function afficher(){
 
 
 let jeu=()=>{
-	divisions[0][0].classList.add('sol')
 	initLaby()
 	MC()
 	draw()
